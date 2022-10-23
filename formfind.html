@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FINDING MEMBER</title>
+    <script>
+        let send=()=>{
+            request = new XMLHttpRequest();
+            request.onreadystatechange = showResult;
+
+            let keyword = document.getElementById("keyword").value;
+            let url = "findmember.php?keyword=" + keyword;
+            request.open("GET",url,true);
+            request.send(null);
+        }
+
+        let showResult = () =>{
+            if(request.readyState == 4){
+                if(request.status == 200){
+                    document.getElementById("result").innerHTML = request.responseText;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    จงค้นหาเลยชื่อสมาชิกได้เลย:  
+    <input type="text" id="keyword" onkeyup="send()"><br>
+    <div id="result"></div>
+
+</body>
+</html>
