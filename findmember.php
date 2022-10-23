@@ -10,14 +10,16 @@
     $sql = "SELECT * FROM member WHERE username LIKE '%$keyword%'";
     $objQuery = mysqli_query($conn,$sql);
 ?>
-     สมาชิกที่ค้นหาเจอ<br>
+     สมาชิกที่ค้นหาเจอ:<br>
     <?php while($row = mysqli_fetch_array($objQuery)){?>
        
         <div style="padding:15px">
+            <h2>username คือ: <?=$row["username"]?></h2>
             ชื่อสมาชิก: <?=$row["name"]?><br>
             ที่อยู่: <?=$row["address"]?><br>
             Email: <?=$row["email"]?><br>
             เบอร์: <?=$row["mobile"]?><br>
+            <img src="memberimgs/<?=$row["username"]?>.jpg" width='100'>
             <hr>
         </div>
     <?php } ?>
